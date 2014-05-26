@@ -35,4 +35,7 @@ var example = function(context) {
 
 
 var examples = examples || [];
-examples.push({'shapes': example});
+examples.push({
+    name: 'shapes',
+    code: example
+});

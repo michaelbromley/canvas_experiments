@@ -49,4 +49,7 @@ var example = function(context) {
 }
 
 var examples = examples || [];
-examples.push({'animating colour 2': example});
+examples.push({
+    name: 'animating colour 2',
+    code: example
+});

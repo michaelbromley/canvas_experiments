@@ -63,12 +63,15 @@ var example = function(context) {
 
     // handler to update mouse coordinates
     $("#canvas").on('mousemove', function(e){
-       var offset = $(this).offset();
-       //or $(this).offset(); if you really just want the current element's offset
-       mouseX = e.pageX - offset.left;
-       mouseY = e.pageY - offset.top;
+        var offset = $(this).offset();
+        //or $(this).offset(); if you really just want the current element's offset
+        mouseX = e.pageX - offset.left;
+        mouseY = e.pageY - offset.top;
     });
 }
 
 var examples = examples || [];
-examples.push({'responding to input': example});
+examples.push({
+    name: 'responding to input',
+    code: example
+});

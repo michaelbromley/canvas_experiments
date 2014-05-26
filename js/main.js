@@ -16,7 +16,7 @@ function makeSelector() {
     var name;
     var select = $("#selector");
     for(i = 0; i < examples.length; i++) {
-        name = Object.keys(examples[i])[0];
+        name = examples[i].name;
         $("<option />", {value: i, text: name}).appendTo(select);
     }
 }
@@ -37,10 +37,19 @@ function resetContext(context) {
 
 function loadExample(context) {
     var fn;
+    var code;
     var selectedExample = examples[$("#selector").val()];
     if (selectedExample) {
-        fn = selectedExample[Object.keys(selectedExample)[0]];
+        fn = selectedExample.code;
         fn(context);
+        // replace angled brackets
+        code = fn.toString().replace(/[<>]/g, function(m){
+                return {
+                    '<' : '&lt;',
+                    '>' : '&gt;'
+                }[m];
+            });
+        $("#code").html(code);
     }
 }
 

@@ -13,4 +13,7 @@ var example = function(context) {
 
 
 var examples = examples || [];
-examples.push({'a line': example});
+examples.push({
+    name: 'a line',
+    code: example
+});

@@ -13,16 +13,15 @@ var example = function(context) {
     var audioElement = $('<audio src="assets/04%20Newjack.mp3" controls autoplay></audio>');
     $("#canvas").after(audioElement);
 
-    // designate the <audio> element as the source for our audio data
-    var source = audioContext.createMediaElementSource(audioElement[0]);
-    source.connect(analyser);
-    analyser.connect(audioContext.destination);
-
     // create an analyzer that will get the real-time audio data from the <audio> element
     var analyser = audioContext.createAnalyser();
     analyser.fftSize = 64;
     var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
+    // designate the <audio> element as the source for our audio data
+    var source = audioContext.createMediaElementSource(audioElement[0]);
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
 
     // this is the same as the previous examples
     var canvasWidth = context.canvas.width;
@@ -84,4 +83,7 @@ var example = function(context) {
 };
 
 var examples = examples || [];
-examples.push({'responding to audio input': example});
+examples.push({
+    name: 'responding to audio input',
+    code: example
+});

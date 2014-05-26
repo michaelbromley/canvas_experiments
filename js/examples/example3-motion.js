@@ -11,6 +11,8 @@ var example = function(context) {
     context.fillStyle = "rgba(231, 46, 133, 0.5)";
 
     function draw(){
+        context.clearRect(0, 0, canvasWidth, canvasHeight);
+        y = (Math.sin(x/25) * 20) + 150;
         context.fillRect(x, y, 20, 20);
 
         if (x < canvasWidth) {
@@ -27,13 +29,16 @@ var example = function(context) {
 
 
 var examples = examples || [];
-examples.push({'simple motion': example});
+examples.push({
+    name: 'simple motion',
+    code: example
+});
 
 
 
 /*
 
-context.clearRect(0, 0, canvasWidth, canvasHeight);
+ context.clearRect(0, 0, canvasWidth, canvasHeight);
 
  y = (Math.sin(x/25) *20) + 150;
 

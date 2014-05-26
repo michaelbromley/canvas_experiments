@@ -21,21 +21,24 @@ var example = function(context) {
 
 
 var examples = examples || [];
-examples.push({'animating colour 1': example});
+examples.push({
+    name: 'animating colour 1',
+    code: example
+});
 
 
 
 /*
-var squareSize = 50;
-var stagger = 0;
-for (var row = 0; row < canvasHeight/squareSize; row ++) {
-            for (var col = 0; col < canvasWidth/squareSize; col ++) {
-                var val = stagger + incrementer;
-                context.fillStyle = "hsl(" + val + ", 100%, 50%)";
-                var x = col * squareSize;
-                var y = row * squareSize;
-                context.fillRect(x, y, squareSize, squareSize);
-                stagger += 5;
-            }
-        }
+ var squareSize = 50;
+ var stagger = 0;
+ for (var row = 0; row < canvasHeight/squareSize; row ++) {
+ for (var col = 0; col < canvasWidth/squareSize; col ++) {
+ var val = stagger + incrementer;
+ context.fillStyle = "hsl(" + val + ", 100%, 50%)";
+ var x = col * squareSize;
+ var y = row * squareSize;
+ context.fillRect(x, y, squareSize, squareSize);
+ stagger += 5;
+ }
+ }
  */
