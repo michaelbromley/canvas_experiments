@@ -21,7 +21,7 @@
             }
             incrementer += speed;
         }
-        timer = setInterval(draw, 16.6);
+        timer = setInterval(draw, 1000/60);
 
         function makeSquares() {
             var squares = [];

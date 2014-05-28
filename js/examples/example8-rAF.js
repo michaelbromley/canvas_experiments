@@ -7,30 +7,26 @@
     var example = function(context) {
         var canvasWidth = context.canvas.width;
         var canvasHeight = context.canvas.height;
-        var seconds = 0;
-        var frames = 0;
-        context.strokeStyle = "#555";
-        context.lineWidth = 2;
+        var incrementer = 0;
+        context.lineWidth = 1;
 
         function draw() {
-            context.clearRect(0, 0, canvasWidth, canvasHeight);
+            context.fillStyle = "rgba(0,0,0,0.2)";
+            context.fillRect(0, 0, canvasWidth, canvasHeight);
+            for (var i = 0; i < 1000; i++) {
+                var distanceFromCentre = i/2;
+                var x = Math.sin(incrementer * i/10000) * distanceFromCentre + canvasWidth / 2;
+                var y = Math.cos(incrementer * i/10000) * distanceFromCentre + canvasHeight / 2;
+                var hue = (incrementer + i) / 3;
+                context.fillStyle = "hsla(" + hue + ", 100%, 50%, 0.7)";
 
-            context.font = "200px arial";
-            context.fillText(seconds, 100, 200);
+                context.beginPath();
+                context.arc(x, y, 2, 0, 2 * Math.PI, false);
+                context.fill();
 
-            context.font = "100px arial";
-            var framesPadded = function() {
-                return frames < 10 ? "0" + frames: frames;
+                incrementer += 0.01;
             }
-            context.fillText(framesPadded(), 350, 200);
-
-            frames ++;
-            if (60 <= frames) {
-                seconds ++;
-                frames = 0;
-            }
-            //timer = requestAnimationFrame(draw);
-            timer = setTimeout(draw, 16.666);
+            timer = requestAnimationFrame(draw);
         }
 
         draw();
@@ -38,7 +34,6 @@
 
     var destructor = function() {
         cancelAnimationFrame(timer);
-        clearTimeout(timer);
     };
 
     examples.push({

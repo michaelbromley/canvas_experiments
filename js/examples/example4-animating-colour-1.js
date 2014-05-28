@@ -17,7 +17,7 @@
 
             incrementer += 0.5;
         }
-        timer = setInterval(draw, 16.6);
+        timer = setInterval(draw, 1000/60);
     };
 
     var destructor = function() {
