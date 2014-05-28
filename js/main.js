@@ -1,6 +1,5 @@
 
 var examples = examples || [];
-var timer;
 
 $(window).bind("load", function() {
     init();
@@ -30,7 +29,6 @@ function registerChangeEvent() {
 }
 
 function resetContext(context) {
-    clearInterval(timer);
     context.beginPath();
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 }

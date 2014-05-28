@@ -2,29 +2,30 @@
  * Created by Michael on 24/05/14.
  */
 
-var example = function(context) {
+(function(examples) {
 
-    var canvasWidth = context.canvas.width;
-    var canvasHeight = context.canvas.height;
-    var incrementer = 0;
+    var example = function(context) {
 
-    function draw(){
-        context.fillStyle = "hsl(" + incrementer + ", 100%, 50%)";
-        context.fillRect(0, 0, canvasWidth, canvasHeight);
+        var canvasWidth = context.canvas.width;
+        var canvasHeight = context.canvas.height;
+        var incrementer = 0;
 
-        incrementer += 0.5;
+        function draw(){
+            context.fillStyle = "hsl(" + incrementer + ", 100%, 50%)";
+            context.fillRect(0, 0, canvasWidth, canvasHeight);
+
+            incrementer += 0.5;
+        }
+        timer = setInterval(draw, 16.6);
+
     }
-    timer = setInterval(draw, 16.6);
 
-}
+    examples.push({
+        name: 'animating colour 1',
+        code: example
+    });
 
-
-
-var examples = examples || [];
-examples.push({
-    name: 'animating colour 1',
-    code: example
-});
+})(examples);
 
 
 
