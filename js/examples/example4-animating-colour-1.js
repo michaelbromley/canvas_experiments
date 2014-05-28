@@ -3,6 +3,7 @@
  */
 
 (function(examples) {
+    var timer;
 
     var example = function(context) {
 
@@ -17,12 +18,16 @@
             incrementer += 0.5;
         }
         timer = setInterval(draw, 16.6);
+    };
 
-    }
+    var destructor = function() {
+        clearInterval(timer);
+    };
 
     examples.push({
         name: 'animating colour 1',
-        code: example
+        code: example,
+        destructor: destructor
     });
 
 })(examples);

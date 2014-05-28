@@ -3,9 +3,9 @@
  */
 
 (function(examples) {
+    var timer;
 
     var example = function(context) {
-
         var canvasWidth = context.canvas.width;
         var canvasHeight = context.canvas.height;
         context.strokeStyle = "#555";
@@ -27,9 +27,14 @@
         draw();
     };
 
+    var destructor = function() {
+        cancelAnimationFrame(timer);
+    };
+
     examples.push({
         name: 'optimizing by grouping draw commands',
-        code: example
+        code: example,
+        destructor: destructor
     });
 
 })(examples);

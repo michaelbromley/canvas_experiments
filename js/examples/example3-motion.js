@@ -3,6 +3,7 @@
  */
 
 (function(examples) {
+    var timer;
 
     var example = function(context) {
 
@@ -25,12 +26,16 @@
         }
 
         timer = setInterval(draw, 16.6);
+    };
 
-    }
+    var destructor = function() {
+        clearInterval(timer);
+    };
 
     examples.push({
         name: 'simple motion',
-        code: example
+        code: example,
+        destructor: destructor
     });
 
 })(examples);

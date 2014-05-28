@@ -1,5 +1,6 @@
 
 var examples = examples || [];
+var currentExample = {};
 
 $(window).bind("load", function() {
     init();
@@ -29,6 +30,9 @@ function registerChangeEvent() {
 }
 
 function resetContext(context) {
+    if (currentExample.destructor) {
+        currentExample.destructor();
+    }
     context.beginPath();
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 }
@@ -36,18 +40,21 @@ function resetContext(context) {
 function loadExample(context) {
     var fn;
     var code;
-    var selectedExample = examples[$("#selector").val()];
-    if (selectedExample) {
-        fn = selectedExample.code;
+    currentExample = examples[$("#selector").val()];
+    if (currentExample) {
+        fn = currentExample.code;
         fn(context);
-        // replace angled brackets
-        code = fn.toString().replace(/[<>]/g, function(m){
-                return {
-                    '<' : '&lt;',
-                    '>' : '&gt;'
-                }[m];
-            });
+        code = stripAngleBrackets(fn);
         $("#code").html(code);
     }
+}
+
+function stripAngleBrackets(string) {
+    return string.toString().replace(/[<>]/g, function(m){
+        return {
+            '<' : '&lt;',
+            '>' : '&gt;'
+        }[m];
+    });
 }
 

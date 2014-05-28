@@ -31,7 +31,7 @@
         context.closePath();
         context.fill();
         context.stroke();
-    }
+    };
 
     examples.push({
         name: 'shapes',

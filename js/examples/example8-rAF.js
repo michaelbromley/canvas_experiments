@@ -39,7 +39,7 @@
     var destructor = function() {
         cancelAnimationFrame(timer);
         clearTimeout(timer);
-    }
+    };
 
     examples.push({
         name: 'optimizing with requestAnimationFrame',

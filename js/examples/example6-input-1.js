@@ -3,6 +3,7 @@
  */
 
 (function(examples) {
+    var timer;
 
     var example = function(context) {
 
@@ -70,11 +71,16 @@
             mouseX = e.pageX - offset.left;
             mouseY = e.pageY - offset.top;
         });
-    }
+    };
+
+    var destructor = function() {
+        clearInterval(timer);
+    };
 
     examples.push({
         name: 'responding to input',
-        code: example
+        code: example,
+        destructor: destructor
     });
 
 })(examples);

@@ -9,7 +9,7 @@
         context.moveTo(100, 100);
         context.lineTo(500, 100);
         context.stroke();
-    }
+    };
 
     examples.push({
         name: 'a line',

@@ -3,16 +3,17 @@
  */
 
 (function(examples) {
+    var timer;
+    var audioElement;
 
     var example = function(context) {
-
         // set up the audio context
         var audioContext;
         window.AudioContext = window.AudioContext||window.webkitAudioContext;
         audioContext = new AudioContext();
 
         // add an <audio> element to the page which will autoplay
-        var audioElement = $('<audio src="assets/04%20Newjack.mp3" controls autoplay></audio>');
+        audioElement = $('<audio src="assets/04%20Newjack.mp3" controls autoplay></audio>');
         $("#canvas").after(audioElement);
 
         // create an analyzer that will get the real-time audio data from the <audio> element
@@ -84,9 +85,15 @@
         }
     };
 
+    var destructor = function() {
+        clearInterval(timer);
+        audioElement.remove();
+    };
+
     examples.push({
         name: 'responding to audio input',
-        code: example
+        code: example,
+        destructor: destructor
     });
 
 })(examples);

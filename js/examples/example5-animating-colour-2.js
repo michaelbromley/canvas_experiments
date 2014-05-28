@@ -3,6 +3,7 @@
  */
 
 (function(examples) {
+    var timer;
 
     var example = function(context) {
 
@@ -48,11 +49,16 @@
                 }
             }
         }
-    }
+    };
+
+    var destructor = function() {
+        clearInterval(timer);
+    };
 
     examples.push({
         name: 'animating colour 2',
-        code: example
+        code: example,
+        destructor: destructor
     });
 
 })(examples);
